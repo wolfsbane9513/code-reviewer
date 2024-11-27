@@ -36,6 +36,40 @@ class NotionService:
                     "rich_text": [{"type": "text", "text": {"content": file_path}}]
                 }
             },
-            # ... rest of the blocks
+             {
+              "object": "block",
+              "type": "heading_2",
+              "heading_2": {
+                "rich_text": [{ "type": "text", "text": { "content": "📝 Review" } }]
+              }
+            },
+            {
+              "object": "block",
+              "type": "paragraph",
+              "paragraph": {
+                "rich_text": [{ "type": "text", "text": { "content": review[2] } }]
+              }
+            },
+            {
+              "object": "block",
+              "type": "heading_2",
+              "heading_2": {
+                "rich_text": [{ "type": "text", "text": { "content": "💡 Updated code" } }]
+              }
+            },
+            {
+              "object": "block",
+              "type": "code",
+              "code": {
+                "caption": [],
+                "rich_text": [{
+                  "type": "text",
+                  "text": {
+                    "content": review[3]
+                  }
+                }],
+                "language": "markdown"
+              }
+            },
         ]
         return self.client.blocks.children.append(block_id=page_id, children=children)
